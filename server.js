@@ -31,7 +31,7 @@ app.get('/books', (request, response) => {
   client.query('SELECT * FROM books;')
     .then( (result) => {
       response.render('index', {
-        pageTitle: 'All da books',
+        pageTitle: 'Winter Time Reading',
         books: result.rows
       });
     })
@@ -40,13 +40,29 @@ app.get('/books', (request, response) => {
     });
 });
 
+
+app.get('/books/:id', (request, response) => {
+  console.log('in route')
+  let SQL = 'SELECT * FROM books WHERE id = $1';
+  let values = [request.params.id];
+  client.query(SQL, values, (err, result)=> {
+    
+    if(err) {
+      console.log(result);
+      console.error(err);
+      response.redirect('/error');
+    }else{
+      response.render('./pages/show', {book: result.rows[0] });
+    }
+  });
+});
+
 app.get('*', (request, response) => {
   response.statusCode = 404;
   response.render('./pages/error', {
     error: 'BAD URL - Try again!'
   });
 });
-
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}!`);
 });
