@@ -3,15 +3,15 @@
 <%- include('partials/head'); %>
 <body>
     <h1><%= pageTitle %></h1>
-    <h2><%= books.length %></h2>
-    <ul>
-        <% books.forEach( book => {  %>
-            <li><%= book.title %></li>
-            <li><%= book.author %></li>
-            <img src = "<%= book.image_url %>"/>
-        <% }) %>
-    </ul>
+    <h2><%= books.length %> Recommended Books</h2>
 
+    <% books.forEach( book => {  %>
+    <div>
+        <h3><%= book.title %></h3>
+        <h4><%= book.author %></h4>
+        <img src = "<%= book.image_url %>"/>
+    </div>
+    <% }) %>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </body>
 </html>
