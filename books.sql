@@ -30,7 +30,7 @@ VALUES(
     'Alexandra Heller-Nicholas',
     'Found Footage Horror Films', 
     9780786470778, 
-    'http://books.google.com/books/content?id=5CtYoSSxomcC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api', 
+    'http://books.google.com/books/content?id=pkNXAwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api', 
     'As the horror subgenre du jour, found footage horror''s amateur filmmaking look has made it available to a range of budgets. Surviving by adapting to technological and cultural shifts and popular trends, found footage horror is a successful and surprisingly complex experiment in blurring the lines between quotidian reality and horror''s dark and tantalizing fantasies. Found Footage Horror Films explores the subgenre''s stylistic, historical and thematic development. It examines the diverse prehistory beyond Man Bites Dog (1992) and Cannibal Holocaust (1980), paying attention to the safety films of the 1960s, the snuff-fictions of the 1970s, and to television reality horror hoaxes and mockumentaries during the 1980s and 1990s in particular. It underscores the importance of The Blair Witch Project (1999) and Paranormal Activity (2007), and considers YouTube''s popular rise in sparking the subgenre''s recent renaissance.'
 );
 
