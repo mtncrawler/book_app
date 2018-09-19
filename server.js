@@ -1,13 +1,17 @@
 'use strict';
 
+//Application dependencies
+//required things
 const pg = require('pg');
 const express = require('express');
 const ejs = require('ejs');
 require('dotenv').config();
 
+//application setup
 const PORT = process.env.PORT;
 const app = express();
 
+//database setup
 const conString = process.env.DATABASE_URL;
 const client = new pg.Client(conString);
 client.connect();
@@ -21,26 +25,24 @@ app.use(express.static('./public'));
 
 app.set('view engine', 'ejs');
 
-app.get('/hello', (request, response) => {
-  response.render('index');
-});
+app.get('/', (req, res) => res.redirect('/books'));
 
 app.get('/books', (request, response) => {
-  client.query('SELECT title, author, image_url FROM books;')
+  client.query('SELECT * FROM books;')
     .then( (result) => {
       response.render('index', {
         pageTitle: 'All da books',
         books: result.rows
       });
     })
-    .catch(function(err) {
-      console.error(err);
+    .catch( (error) => {
+      response.render('./pages/error', {error: error});
     });
 });
 
 app.get('*', (request, response) => {
   response.statusCode = 404;
-  response.render('error', {
+  response.render('./pages/error', {
     error: 'BAD URL - Try again!'
   });
 });
