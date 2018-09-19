@@ -27,6 +27,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => res.redirect('/books'));
 
+//retrieve all books and render on index
 app.get('/books', (request, response) => {
   client.query('SELECT * FROM books;')
     .then( (result) => {
@@ -40,7 +41,7 @@ app.get('/books', (request, response) => {
     });
 });
 
-
+//retrieve one 1 book by id then render on show.ejs
 app.get('/books/:id', (request, response) => {
   let SQL = 'SELECT * FROM books WHERE id = $1';
   let values = [request.params.id];
@@ -54,6 +55,7 @@ app.get('/books/:id', (request, response) => {
   });
 });
 
+//if bad URL entered send to error.ejs
 app.get('*', (request, response) => {
   response.statusCode = 404;
   response.render('./pages/error', {
