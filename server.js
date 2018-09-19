@@ -25,7 +25,7 @@ app.use(express.static('./public'));
 
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => res.redirect('/index'));
+app.get('/', (req, res) => res.redirect('/books'));
 
 app.get('/books', (request, response) => {
   client.query('SELECT * FROM books;')
@@ -36,13 +36,13 @@ app.get('/books', (request, response) => {
       });
     })
     .catch( (error) => {
-      response.render('/pages/error', {error: error});
+      response.render('./pages/error', {error: error});
     });
 });
 
 app.get('*', (request, response) => {
   response.statusCode = 404;
-  response.render('error', {
+  response.render('./pages/error', {
     error: 'BAD URL - Try again!'
   });
 });
