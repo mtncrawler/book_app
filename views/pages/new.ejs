@@ -3,14 +3,15 @@
 <%- include('../partials/head'); %>
 <body>
   <%- include('../partials/header', {title: 'Add New Book'}); %>
+  <div class = 'formDiv'>
   <form action="/books" method="POST">
-    <label>Title: <input type="text" name="title" /></label>
-    <label>Author: <input type="text" name="author" /></label>
-    <label>Author URL: <input type="text" name="image_url" /></label>
-    <label>Description: <input type="text" name="description" /></label>
-    <label>ISBN: <input type="text" name="isbn" /></label>
-    
+    <input class = "formWidth" type="text" name="title" placeholder = "Title" />
+    <input class = "formWidth" type="text" name="author" placeholder = "Author" />
+    <input class = "formWidth" type="text" name="isbn" placeholder = "ISBN" />
+    <input class = "formWidth" class = "formWidth" type="text" name="image_url" placeholder = "Image URL" />
+    <textarea class = "formWidth" type="text" name="description" placeholder = "Description"></textarea> 
     <input type="submit" />
   </form>
+  </div>
 </body>
 </html>
