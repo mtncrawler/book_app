@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/head'); %>
+<body>
+  <h1>Add New Book</h1>
+  <%- include('../partials/header'); %>
+  
+  <div class = 'formDiv'>
+  <form action="/books" method="POST">
+    <input class = "formWidth" type="text" name="title" placeholder = "Title" />
+    <input class = "formWidth" type="text" name="author" placeholder = "Author" />
+    <input class = "formWidth" type="text" name="isbn" placeholder = "ISBN" />
+    <input class = "formWidth" class = "formWidth" type="text" name="image_url" placeholder = "Image URL" />
+    <textarea class = "formWidth" type="text" name="description" placeholder = "Description"></textarea> 
+    <input type="submit" />
+  </form>
+  </div>
+</body>
+</html>

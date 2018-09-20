@@ -1,1 +1,29 @@
-<h1><a href="/books">Winter Reading List</a></h1>
+<nav role="navigation">
+    <div id="menuToggle">
+      <!--
+      A fake / hidden checkbox is used as click reciever,
+      so you can use the :checked selector on it.
+      -->
+      <input type="checkbox" />
+      
+      <!--
+      Some spans to act as a hamburger.
+      
+      They are acting like a real hamburger,
+      not that McDonalds stuff.
+      -->
+      <span></span>
+      <span></span>
+      <span></span>
+      
+      <!--
+      Too bad the menu has to be inside of the button
+      but hey, it's pure CSS magic.
+      -->
+      <ul id="menu">
+        <a href="/books"><li>Home</li></a>
+        <a href="/books/new"><li>Add New Book</li></a>
+        <a href="/books/search"><li> Search</li></a>
+      </ul>
+    </div>
+  </nav>
