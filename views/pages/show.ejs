@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-<%- include ../partials/head -%>
+<%- include('../partials/head'); %>
 <body>
-  <%- include ../partials/header -%>
+  <%- include('../partials/header', {title: 'Winter Reading List'}); %>
   <div>
     <img src = "<%= book.image_url %>"/>
     <h1><% book.title%></h1>

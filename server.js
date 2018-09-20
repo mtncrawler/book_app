@@ -27,12 +27,16 @@ app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => res.redirect('/books'));
 
+//new route to render add new book page
+app.get('/books/new', (req, res) => {
+  res.render('pages/new');
+});
+
 //retrieve all books and render on index
 app.get('/books', (request, response) => {
   client.query('SELECT * FROM books;')
     .then( (result) => {
       response.render('index', {
-        pageTitle: 'Winter Reading List',
         books: result.rows
       });
     })
@@ -52,6 +56,23 @@ app.get('/books/:id', (request, response) => {
     }else{
       response.render('./pages/show', {book: result.rows[0] });
     }
+  });
+});
+
+//take form data to insert new book into database
+app.post('/books', (request, response) => {
+  console.log('got a post!');
+  let SQL = 'INSERT INTO books (title, author, isbn, image_url, description) VALUES ($1, $2, $3, $4, $5) RETURNING id;';
+  let values = [
+    request.body.title,
+    request.body.author,
+    request.body.isbn,
+    request.body.image_url,
+    request.body.description
+  ];
+  client.query(SQL, values, (err, result) => {
+    console.log(result);
+    response.redirect(`/books/${result.rows[0].id}`);
   });
 });
 
