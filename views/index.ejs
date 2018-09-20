@@ -2,8 +2,9 @@
 <html>
 <%- include('partials/head'); %>
 <body>
-    <%- include('partials/header', {title: 'Winter Reading List'}); %>
+    <h1>Winter Reading List</h1>
     <h2><%= books.length %> Recommended Books</h2>
+    <%- include('partials/header', {title: 'Winter Reading List'}); %>
 
     <% books.forEach( book => {  %>
     <div>

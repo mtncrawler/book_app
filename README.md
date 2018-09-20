@@ -13,7 +13,7 @@
 HTML, JS, EJS, Express, Node.js, Express.js
 
 ## Change Log
-
+09-20-18 11:15am added focus element to the form, and found code for the Hamburger menu from code pen
 09-20-18 10:07am User from data inserted into database and displays new book info.
 09-20-18 9:55am Added new.ejs page to allow user to input data for new book.
 09-19-18 11:47am Added styling.
@@ -24,4 +24,4 @@ HTML, JS, EJS, Express, Node.js, Express.js
 
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
--->
+--> got hamburger menu base code from erik'sCodePent...thank you imaginary erik https://codepen.io/erikterwan/pen/EVzeRP?editors=1000 */

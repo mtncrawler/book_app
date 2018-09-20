@@ -3,6 +3,7 @@
 <%- include('../partials/head'); %>
 <body>
   <%- include('../partials/header', {title: 'Add New Book'}); %>
+  
   <div class = 'formDiv'>
   <form action="/books" method="POST">
     <input class = "formWidth" type="text" name="title" placeholder = "Title" />
