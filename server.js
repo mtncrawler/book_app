@@ -33,7 +33,23 @@ app.get('/books/new', (req, res) => {
 });
 
 //retrieve all books and render on index
-app.get('/books', (request, response) => {
+app.get('/books', getBooks);
+
+//retrieve one 1 book by id then render on show.ejs
+app.get('/books/:id', getOneBook);
+
+//take form data to insert new book into database
+app.post('/books', addBook);
+
+//if bad URL entered send to error.ejs
+app.get('*', badUrl);
+
+app.listen(PORT, () => {
+  console.log(`listening on port ${PORT}!`);
+});
+
+//helper functions
+function getBooks(request, response) {
   client.query('SELECT * FROM books;')
     .then( (result) => {
       response.render('index', {
@@ -43,12 +59,12 @@ app.get('/books', (request, response) => {
     .catch( (error) => {
       response.render('./pages/error', {error: error});
     });
-});
+}
 
-//retrieve one 1 book by id then render on show.ejs
-app.get('/books/:id', (request, response) => {
+function getOneBook(request, response) {
   let SQL = 'SELECT * FROM books WHERE id = $1';
   let values = [request.params.id];
+
   client.query(SQL, values, (err, result)=> {
     if(err) {
       console.error(err);
@@ -57,10 +73,9 @@ app.get('/books/:id', (request, response) => {
       response.render('./pages/show', {book: result.rows[0] });
     }
   });
-});
+}
 
-//take form data to insert new book into database
-app.post('/books', (request, response) => {
+function addBook(request, response) {
   console.log('got a post!');
   let SQL = 'INSERT INTO books (title, author, isbn, image_url, description) VALUES ($1, $2, $3, $4, $5) RETURNING id;';
   let values = [
@@ -70,20 +85,16 @@ app.post('/books', (request, response) => {
     request.body.image_url,
     request.body.description
   ];
+
   client.query(SQL, values, (err, result) => {
     console.log(result);
     response.redirect(`/books/${result.rows[0].id}`);
   });
-});
+}
 
-//if bad URL entered send to error.ejs
-app.get('*', (request, response) => {
+function badUrl(request, response) {
   response.statusCode = 404;
   response.render('./pages/error', {
     error: 'BAD URL - Try again!'
   });
-});
-app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}!`);
-});
-
+}
