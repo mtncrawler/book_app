@@ -15,9 +15,7 @@ const app = express();
 const conString = process.env.DATABASE_URL;
 const client = new pg.Client(conString);
 client.connect();
-client.on('error', error => {
-  console.error(error);
-});
+client.on('error', error => console.error(error));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -28,9 +26,7 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.redirect('/books'));
 
 //new route to render add new book page
-app.get('/books/new', (req, res) => {
-  res.render('pages/new');
-});
+app.get('/books/new', (req, res) => res.render('pages/new'));
 
 //retrieve all books and render on index
 app.get('/books', getBooks);
@@ -87,8 +83,13 @@ function addBook(request, response) {
   ];
 
   client.query(SQL, values, (err, result) => {
-    console.log(result);
-    response.redirect(`/books/${result.rows[0].id}`);
+    if(err) {
+      console.error(err);
+      response.redirect('/error');
+    }else{
+      console.log(result);
+      response.redirect(`/books/${result.rows[0].id}`);
+    }
   });
 }
 
