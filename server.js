@@ -90,7 +90,8 @@ function getOneBook(request, response) {
       console.error(err);
       response.redirect('/error');
     }else{
-      response.render('./pages/books/show', {book: result.rows[0] });
+      response.render('./pages/books/show', {
+        book: result.rows[0]});
     }
   });
 }
@@ -113,7 +114,7 @@ function addBook(request, response) {
       response.redirect('/error');
     }else{
       console.log(result);
-      response.redirect(`/books/${result.rows[0].id}`);
+      response.redirect(`/books/${result.rows[0].id}?added=true`);
     }
   });
 }
