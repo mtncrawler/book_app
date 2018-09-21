@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<%- include('../partials/head'); %>
+<%- include('../../partials/head'); %>
 <body>
   <h1><%= book.title%></h1>
-  <%- include('../partials/header'); %>
+  <%- include('../../partials/header'); %>
   <div>
     <img src = "<%= book.image_url %>"/>
     
@@ -11,7 +11,5 @@
     <h4><%= book.author %></h4>
     <p><%= book.description %></p>
   </div>
-  
-  
 </body>
 </html>

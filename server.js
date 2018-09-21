@@ -26,7 +26,10 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.redirect('/books'));
 
 //new route to render add new book page
-app.get('/books/new', (req, res) => res.render('pages/new'));
+app.get('/books/new', (req, res) => res.render('pages/books/new'));
+
+//new route to render search for book page
+app.get('/searches/new', (req, res) => res.render('pages/searches/new'));
 
 //retrieve all books and render on index
 app.get('/books', getBooks);
@@ -66,7 +69,7 @@ function getOneBook(request, response) {
       console.error(err);
       response.redirect('/error');
     }else{
-      response.render('./pages/show', {book: result.rows[0] });
+      response.render('./pages/books/show', {book: result.rows[0] });
     }
   });
 }
