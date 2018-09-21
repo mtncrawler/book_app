@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS books(
     title VARCHAR(256),
     isbn BIGINT,
     image_url VARCHAR(256),
-    description VARCHAR(1000)
+    description VARCHAR(2000)
 );
 
 INSERT INTO books(author, title, isbn, image_url, description)

@@ -6,6 +6,7 @@ const pg = require('pg');
 const express = require('express');
 const ejs = require('ejs');
 require('dotenv').config();
+const superagent = require('superagent');
 
 //application setup
 const PORT = process.env.PORT;
@@ -39,6 +40,26 @@ app.get('/books/:id', getOneBook);
 
 //take form data to insert new book into database
 app.post('/books', addBook);
+
+app.post('/searches/show', addBook);
+
+//new route to connect to Google books API
+app.get('/searches/show', (request, response) => {
+  console.log(request.query.searchBar);
+  superagent.get(`https://www.googleapis.com/books/v1/volumes?q=${request.query.searchBar}`)
+    .end( (err, apiResponse) => {
+      console.log(apiResponse.body);
+
+      let books = apiResponse.body.items.map(book => ({
+        image_url: book.volumeInfo.imageLinks.smallThumbnail,
+        title: book.volumeInfo.title,
+        author: book.volumeInfo.authors,
+        isbn: book.volumeInfo.industryIdentifiers[0].identifier,
+        description: book.volumeInfo.description}));
+
+      response.render('./pages/searches/show', {books: books});
+    });
+});
 
 //if bad URL entered send to error.ejs
 app.get('*', badUrl);
@@ -76,6 +97,7 @@ function getOneBook(request, response) {
 
 function addBook(request, response) {
   console.log('got a post!');
+  console.log(request.body);
   let SQL = 'INSERT INTO books (title, author, isbn, image_url, description) VALUES ($1, $2, $3, $4, $5) RETURNING id;';
   let values = [
     request.body.title,

@@ -6,12 +6,12 @@
   <%- include('../../partials/header'); %>
   
   <div class = 'formDiv'>
-  <form action="/searches" method="POST">
-    <input class = "formWidth" type="text" name="searchBar" placeholder = "Enter a title or author" />
-    <input class = "radioButtons" type="radio" name="author" value = "Author" />Author<br>
-    <input class = "radioButtons" type="radio" name="author" value = "Title" />Title<br>
-    <input type="submit" />
-  </form>
+    <form action="/searches/show" method="GET">
+        <input class = "formWidth" type="text" name="searchBar" placeholder = "Enter a title or author" />
+        <input class = "radioButtons" type="radio" name="type" value = "Author" />Author<br>
+        <input class = "radioButtons" type="radio" name="type" value = "Title" />Title<br>
+        <input type="submit" />
+    </form>
   </div>
 </body>
 </html>
