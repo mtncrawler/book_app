@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<%- include('../../partials/head'); %>
+<body>
+  <h1>Add New Book</h1>
+  <%- include('../../partials/header'); %>
+  
+  <div class = 'formDiv'>
+    <form action="/searches/show" method="GET">
+        <input class = "formWidth" type="text" name="searchBar" placeholder = "Enter a title or author" />
+        <input class = "radioButtons" type="radio" name="type" value = "Author" />Author<br>
+        <input class = "radioButtons" type="radio" name="type" value = "Title" />Title<br>
+        <input type="submit" />
+    </form>
+  </div>
+</body>
+</html>

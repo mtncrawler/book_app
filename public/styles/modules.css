@@ -1,10 +1,10 @@
 .formWidth {
-display: block;
-text-align: left;
-align-content: center;
-padding: 10px;
-margin:15px 0;
-width: 500px;
+  display: block;
+  text-align: left;
+  align-content: center;
+  padding: 10px;
+  margin:15px 0;
+  width: 500px;
 }
 
 .formWidth:focus {
@@ -18,10 +18,12 @@ textarea {
   padding: 10px;
   margin:15px 0;
   height:100px ;
-  }
+}
   
-
 div.formDiv {
   display: inline-block;
 }
 
+.radioButtons {
+  text-align: left;
+}
