@@ -4,10 +4,14 @@
 **Version**: 1.7.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for a Code Fellows 301 class. (i.e. What's your problem domain?) -->
+Create a site that uses a Postgres database and the Google books API to load, add, and search for books. 
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+Git clone <github repo link>
+Create .env file with PORT and DATABASE_URL environmental variables declared.
+Start postgres in terminal
+nodemon
+type localhost:3000 in browser
 
 ## Architecture
 HTML, JS, EJS, Express, Node.js, Express.js
